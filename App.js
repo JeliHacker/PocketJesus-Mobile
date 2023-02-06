@@ -1,12 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import MainPage from './MainPage';
+import SettingsPage from './SettingsPage';
+import { Ionicons, Entypo } from '@expo/vector-icons';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Main" component={MainPage}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Entypo name="man" size={24} color="black" />
+            ),
+          }}
+        />
+        <Tab.Screen name="Settings" component={SettingsPage} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
