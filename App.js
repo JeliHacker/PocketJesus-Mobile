@@ -15,6 +15,7 @@ export default function App() {
         <Tab.Screen
           name="Main" component={MainPage}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <Entypo name="man" size={24} color="black" />
             ),
