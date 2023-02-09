@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ImageBackground, Button } from 'react-native';
 import quotes from './data/quotes.json';
 
 function MainPage() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(quotes);
     const [currentQuote, setCurrentQuote] = useState({});
 
     useEffect(() => {
