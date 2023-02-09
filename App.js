@@ -13,7 +13,8 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen
-          name="Main" component={MainPage}
+          name="Main"
+          component={MainPage}
           options={{
             headerShown: false,
             tabBarIcon: ({ color, size }) => (
@@ -21,7 +22,16 @@ export default function App() {
             ),
           }}
         />
-        <Tab.Screen name="Settings" component={SettingsPage} />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsPage}
+          options={{
+            headerShown: false,
+            tabBarIcon: () => (
+              <Entypo name="book" size={24} color="black" />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
