@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 function SettingsPage() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>This is the settings page</Text>
+            <Text>Pocket Jesus</Text>
+            <Text>About</Text>
         </View>
     );
 }
