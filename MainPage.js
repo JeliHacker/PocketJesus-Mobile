@@ -5,7 +5,9 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Asset } from 'expo-asset';
 
-async function loadFonts() {
+const background1 = require('./assets/background1.png')
+
+async function loadAssets() {
     await Promise.all([
         Font.loadAsync({
             'times-new-roman': require('./assets/fonts/TimesNewRoman.ttf'),
@@ -18,21 +20,21 @@ async function loadFonts() {
 SplashScreen.preventAutoHideAsync();
 
 
-const background1 = require('./assets/background1.png')
-
 const FadeInView = (props) => {
     const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
 
     React.useEffect(() => {
         fadeAnim.setValue(0)
-        Animated.timing(
-            fadeAnim,
-            {
-                toValue: 1,
-                duration: 2000,
-                useNativeDriver: true
-            }
-        ).start();
+        setTimeout(() => {
+            Animated.timing(
+                fadeAnim,
+                {
+                    toValue: 1,
+                    duration: 2000,
+                    useNativeDriver: true
+                }
+            ).start();
+        }, 500);
     }, [fadeAnim])
 
     return (
@@ -50,17 +52,14 @@ const FadeInView = (props) => {
 function MainPage() {
     const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
     const [isLoadingComplete, setLoadingComplete] = useState(false);
-    // const [fontsLoaded, setFontsLoaded] = useState(false);
     const [data, setData] = useState(quotes);
     const [currentQuote, setCurrentQuote] = useState({});
-    const [imageLoaded, setImageLoaded] = useState(false);
-
 
     useEffect(() => {
         async function loadResourcesAsync() {
             try {
                 await SplashScreen.preventAutoHideAsync();
-                await loadFonts();
+                await loadAssets();
                 setData(quotes);
                 const randomIndex = Math.floor(Math.random() * data.length);
                 setCurrentQuote(data[randomIndex]);
@@ -80,80 +79,11 @@ function MainPage() {
         return <Text>Loading...</Text>;
     }
 
-    // useEffect(() => {
-    //     async function loadFonts() {
-    //         await Font.loadAsync({
-    //             'times-new-roman': require('./assets/fonts/TimesNewRoman.ttf')
-    //         });
-    //         setFontsLoaded(true);
-    //     }
-
-    //     loadFonts();
-    // }, []);
-
-    // if (!fontsLoaded) {
-    //     return <Text>Loading fonts...</Text>;
-    // }
-
-    // const [data, setData] = useState(quotes);
-    // const [currentQuote, setCurrentQuote] = useState({});
-
-    // useEffect(() => {
-    //     setData(quotes);
-    //     const randomIndex = Math.floor(Math.random() * data.length);
-    //     setCurrentQuote(data[randomIndex]);
-    // }, []);
 
     const getRandomQuote = () => {
         const randomIndex = Math.floor(Math.random() * data.length);
         setCurrentQuote(data[randomIndex]);
     };
-
-    // const [isLoadingComplete, setLoadingComplete] = useState(false);
-
-    // const [fontsLoaded, setFontsLoaded] = useState(false);
-
-    // const [imageLoaded, setImageLoaded] = useState(false);
-
-    // useEffect(() => {
-    //     async function loadFonts() {
-    //         await Font.loadAsync({
-    //             'times-new-roman': require('./assets/fonts/TimesNewRoman.ttf')
-    //         });
-    //         setFontsLoaded(true);
-    //     }
-
-    //     loadFonts();
-    // }, []);
-
-    // if (!fontsLoaded || !imageLoaded) {
-    //     return <Text>Loading...</Text>;
-    // }
-
-    // const [data, setData] = useState(quotes);
-    // const [currentQuote, setCurrentQuote] = useState({});
-
-    // useEffect(() => {
-    //     setData(quotes);
-    //     const randomIndex = Math.floor(Math.random() * data.length);
-    //     setCurrentQuote(data[randomIndex]);
-    // }, []);
-
-    // const getRandomQuote = () => {
-    //     const randomIndex = Math.floor(Math.random() * data.length);
-    //     setCurrentQuote(data[randomIndex]);
-    // };
-
-    // const onLayoutRootView = useCallback(async () => {
-    //     if (isLoadingComplete) {
-    //         // This tells the splash screen to hide immediately! If we call this after
-    //         // `setAppIsReady`, then we may see a blank screen while the app is
-    //         // loading its initial state and rendering its first pixels. So instead,
-    //         // we hide the splash screen once we know the root view has already
-    //         // performed layout.
-    //         await SplashScreen.hideAsync();
-    //     }
-    // }, [isLoadingComplete]);
 
     return (
         <View style={styles.container}>
@@ -161,25 +91,20 @@ function MainPage() {
                 source={background1}
                 resizeMode="cover"
                 style={styles.imageBackground}
-            // onLoad={() => setImageLoaded(true)}
             >
-                {/* <View style={styles.quoteContainer}> */}
                 <FadeInView fadeAnim={fadeAnim} style={styles.quoteContainer}>
                     <Text style={styles.verse}>Verse: {currentQuote.Verse}</Text>
                     <Text style={styles.quote}>{currentQuote.Text}</Text>
                 </FadeInView>
-                {/* </View> */}
-                <View style={styles.nextButton}>
-                    <FadeInView>
-                        <Button
-                            onPress={getRandomQuote}
-                            title="Next"
-                            accessibilityLabel="Press this button to get a random quote"
-                            style={{ alignContent: 'center', alignItems: 'center', justifyContent: 'center' }}
-                            setFadeAnim={setFadeAnim}
-                        />
-                    </FadeInView>
-                </View>
+                <FadeInView style={styles.nextButton}>
+                    <Button
+                        onPress={getRandomQuote}
+                        title="Next"
+                        accessibilityLabel="Press this button to get a random quote"
+                        style={{ alignContent: 'center', alignItems: 'center', justifyContent: 'center' }}
+                        setFadeAnim={setFadeAnim}
+                    />
+                </FadeInView>
             </ImageBackground>
         </View>
     );
