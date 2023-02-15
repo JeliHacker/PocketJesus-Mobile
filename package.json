@@ -21,7 +21,9 @@
     "react-native-csv": "^0.2.0",
     "react-native-gesture-handler": "~2.8.0",
     "react-native-reanimated": "~2.12.0",
-    "react-papaparse": "^4.1.0"
+    "react-papaparse": "^4.1.0",
+    "expo-splash-screen": "~0.17.5",
+    "expo-asset": "~8.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3"
