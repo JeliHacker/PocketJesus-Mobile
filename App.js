@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import MainPage from './MainPage';
-import SettingsPage from './SettingsPage';
+import SettingsPage from './SettingsPage'
 import { Ionicons, Entypo } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -23,10 +22,10 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="Settings"
+          name="Pocket Jesus"
           component={SettingsPage}
           options={{
-            headerShown: false,
+            headerShown: true,
             tabBarIcon: () => (
               <Entypo name="book" size={24} color="black" />
             ),
@@ -36,12 +35,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
