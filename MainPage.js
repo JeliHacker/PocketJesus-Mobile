@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Button, useWindowDimensions, Animated, Image } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, Button, Animated, Image } from 'react-native';
 import quotes from './data/quotes.json';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -21,9 +21,9 @@ SplashScreen.preventAutoHideAsync();
 
 
 const FadeInView = (props) => {
-    const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
+    const [fadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
 
-    React.useEffect(() => {
+    useEffect(() => {
         fadeAnim.setValue(0)
         setTimeout(() => {
             Animated.timing(
@@ -92,17 +92,16 @@ function MainPage() {
                 resizeMode="cover"
                 style={styles.imageBackground}
             >
-                <FadeInView fadeAnim={fadeAnim} style={styles.quoteContainer}>
+                <FadeInView getRandomQuote={getRandomQuote} fadeAnim={fadeAnim} style={styles.quoteContainer}>
                     <Text style={styles.verse}>Verse: {currentQuote.Verse}</Text>
                     <Text style={styles.quote}>{currentQuote.Text}</Text>
                 </FadeInView>
-                <FadeInView style={styles.nextButton}>
+                <FadeInView getRandomQuote={getRandomQuote} style={styles.nextButton}>
                     <Button
                         onPress={getRandomQuote}
                         title="Next"
                         accessibilityLabel="Press this button to get a random quote"
                         style={{ alignContent: 'center', alignItems: 'center', justifyContent: 'center' }}
-                        setFadeAnim={setFadeAnim}
                     />
                 </FadeInView>
             </ImageBackground>
@@ -122,7 +121,7 @@ const styles = StyleSheet.create({
     quoteContainer: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: 'rgba(255, 255, 255, 0.4)',
         justifyContent: 'center',
         alignContent: 'center',
         borderRadius: 20,
