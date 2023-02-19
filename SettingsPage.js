@@ -31,12 +31,13 @@ function SettingsPage() {
     ) : null;
 
     return (
-        <ExpandableListView
-            data={CONTENT}
-            chevronColor="black"
-        />
-
-
+        <View>
+            <ExpandableListView
+                data={CONTENT}
+                chevronColor="black"
+            />
+            <Text>Eli Gooch 2023</Text>
+        </View>
     );
 }
 
