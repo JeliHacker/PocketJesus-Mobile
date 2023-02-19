@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Button, Animated, Image } from 'react-native';
 import quotes from './data/quotes.json';
 import * as Font from 'expo-font';
@@ -19,41 +19,11 @@ async function loadAssets() {
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
-
-const FadeInView = (props) => {
-    const [fadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
-
-    useEffect(() => {
-        fadeAnim.setValue(0)
-        setTimeout(() => {
-            Animated.timing(
-                fadeAnim,
-                {
-                    toValue: 1,
-                    duration: 2000,
-                    useNativeDriver: true
-                }
-            ).start();
-        }, 500);
-    }, [fadeAnim])
-
-    return (
-        <Animated.View                 // Special animatable View
-            style={{
-                ...props.style,
-                opacity: fadeAnim,         // Bind opacity to animated value
-            }}
-        >
-            {props.children}
-        </Animated.View>
-    );
-}
-
 function MainPage() {
-    const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
     const [isLoadingComplete, setLoadingComplete] = useState(false);
     const [data, setData] = useState(quotes);
     const [currentQuote, setCurrentQuote] = useState({});
+    const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0));
 
     useEffect(() => {
         async function loadResourcesAsync() {
@@ -63,6 +33,16 @@ function MainPage() {
                 setData(quotes);
                 const randomIndex = Math.floor(Math.random() * data.length);
                 setCurrentQuote(data[randomIndex]);
+                setTimeout(() => {
+                    Animated.timing(
+                        fadeAnim,
+                        {
+                            toValue: 1,
+                            duration: 1000,
+                            useNativeDriver: true,
+                        }
+                    ).start();
+                }, 500)
 
             } catch (e) {
                 console.warn(e);
@@ -79,10 +59,22 @@ function MainPage() {
         return <Text>Loading...</Text>;
     }
 
-
     const getRandomQuote = () => {
-        const randomIndex = Math.floor(Math.random() * data.length);
-        setCurrentQuote(data[randomIndex]);
+        Animated.timing(fadeAnim, {
+            toValue: 0,
+            duration: 500,
+            useNativeDriver: true,
+        }).start(() => {
+
+            const randomIndex = Math.floor(Math.random() * data.length);
+            setCurrentQuote(data[randomIndex]);
+            Animated.timing(fadeAnim, {
+                toValue: 1,
+                duration: 500,
+                useNativeDriver: true,
+            }).start();
+        });
+        console.log(currentQuote)
     };
 
     return (
@@ -92,18 +84,22 @@ function MainPage() {
                 resizeMode="cover"
                 style={styles.imageBackground}
             >
-                <FadeInView getRandomQuote={getRandomQuote} fadeAnim={fadeAnim} style={styles.quoteContainer}>
-                    <Text style={styles.verse}>Verse: {currentQuote.Verse}</Text>
-                    <Text style={styles.quote}>{currentQuote.Text}</Text>
-                </FadeInView>
-                <FadeInView getRandomQuote={getRandomQuote} style={styles.nextButton}>
+                <View style={styles.quoteContainer}>
+                    <Animated.Text style={[styles.verse, { opacity: fadeAnim }]}>
+                        Verse: {currentQuote.Verse}
+                    </Animated.Text>
+                    <Animated.Text style={[styles.quote, { opacity: fadeAnim }]}>
+                        {currentQuote.Text}
+                    </Animated.Text>
+
+                </View>
+                <View style={styles.nextButton}>
                     <Button
                         onPress={getRandomQuote}
                         title="Next"
                         accessibilityLabel="Press this button to get a random quote"
-                        style={{ alignContent: 'center', alignItems: 'center', justifyContent: 'center' }}
                     />
-                </FadeInView>
+                </View>
             </ImageBackground>
         </View>
     );
@@ -137,7 +133,7 @@ const styles = StyleSheet.create({
         // fontSize: currentQuote.Text.length > 20 ? 18 : 20,
         fontSize: 20,
         marginHorizontal: 10,
-        fontFamily: "times-new-roman"
+        fontFamily: "times-new-roman",
     },
     verse: {
         alignContent: 'center',
