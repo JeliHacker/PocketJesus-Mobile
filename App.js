@@ -25,7 +25,7 @@ export default function App() {
           name="Pocket Jesus"
           component={SettingsPage}
           options={{
-            headerShown: true,
+            headerShown: false,
             tabBarIcon: () => (
               <Entypo name="book" size={24} color="black" />
             ),
