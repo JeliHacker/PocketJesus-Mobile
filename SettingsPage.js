@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ExpandableListView } from 'react-native-expandable-listview';
-import StatusBarBackground from './StatusBarBackground'
 
 const CONTENT = [
     {
