@@ -33,16 +33,14 @@ function SettingsPage() {
                 <View
                     style={{
                         borderBottomColor: 'black',
-                        // borderBottomWidth: StyleSheet.hairlineWidth,
                         borderBottomWidth: 1.5
                     }}
                 />
                 <View>
                     <Text>Translation: </Text>
-
                 </View>
 
-                <Text>
+                <Text style={styles.description}>
                     Pocket Jesus is a mobile app that keeps Jesus's sayings in your pocket.
                     Get a daily notification with a random saying, or browse bible verses straight from your phone.
                 </Text>
@@ -52,7 +50,9 @@ function SettingsPage() {
                     That being said, if you would like to support my work you can Venmo me @Eli-Gooch-2 :)
                 </Text>
 
-                <Text>Eli Gooch 2023</Text>
+                <View style={styles.copyrightView}>
+                    <Text style={styles.copyright}>Eli Gooch 2023</Text>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );
@@ -70,6 +70,15 @@ const styles = StyleSheet.create({
         fontSize: 36
     },
     aboutText: {
+        fontSize: 20
+    },
+    description: {
+        fontSize: 20
+    },
+    copyrightView: {
+        alignItems: "center",
+    },
+    copyright: {
         fontSize: 20
     }
 })
