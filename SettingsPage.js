@@ -33,12 +33,18 @@ function SettingsPage() {
                 <View
                     style={{
                         borderBottomColor: 'black',
-                        borderBottomWidth: 1.5
+                        borderBottomWidth: 1.5,
+                        marginHorizontal: -20
                     }}
                 />
-                <View>
-                    <Text>Translation: </Text>
+
+                <View style={styles.translationContainer}>
+                    <Text style={{ fontSize: 20 }}>Translation: </Text>
+
+                    <Text style={styles.translationText}>World English Bible</Text>
                 </View>
+
+                <Text style={{ fontSize: 30 }}>About</Text>
 
                 <Text style={styles.description}>
                     Pocket Jesus is a mobile app that keeps Jesus's sayings in your pocket.
@@ -61,7 +67,8 @@ function SettingsPage() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        paddingHorizontal: 10,
     },
     titleView: {
         alignItems: 'center'
@@ -80,6 +87,16 @@ const styles = StyleSheet.create({
     },
     copyright: {
         fontSize: 20
+    },
+    translationContainer: {
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        paddingTop: 20,
+        paddingBottom: 10
+    },
+    translationText: {
+        fontSize: 20,
+        color: 'gray'
     }
 })
 
