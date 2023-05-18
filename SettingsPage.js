@@ -18,7 +18,7 @@ const CONTENT = [
 
 function SettingsPage() {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'space-between' }}>
             <ScrollView style={styles.container}>
                 {/* <ExpandableListView
                 data={CONTENT}
@@ -51,10 +51,10 @@ function SettingsPage() {
                     Get a daily notification with a random saying, or browse bible verses straight from your phone.
                 </Text>
 
-                <Text style={styles.aboutText}>
+                {/* <Text style={styles.aboutText}>
                     This app will always be free. I will never run ads on Pocket Jesus.
                     That being said, if you would like to support my work you can Venmo me @Eli-Gooch-2 :)
-                </Text>
+                </Text> */}
 
                 <View style={styles.copyrightView}>
                     <Text style={styles.copyright}>Eli Gooch 2023</Text>
@@ -66,7 +66,7 @@ function SettingsPage() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         paddingHorizontal: 10,
     },
@@ -83,7 +83,9 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     copyrightView: {
+        marginTop: 20,
         alignItems: "center",
+        justifyContent: 'flex-end'
     },
     copyright: {
         fontSize: 20
