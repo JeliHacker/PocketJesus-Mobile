@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "pocketjesus-native",
-    "slug": "pocketjesus-native",
-    "version": "1.0.0",
+    "name": "PocketChrist",
+    "slug": "pocketchrist",
+    "displayName": "Pocket Christ",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/1024.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash_without_status_bar.jpeg",
+      "image": "./assets/splash_without_status_bar.png",
       "resizeMode": "contain",
       "backgroundColor": "#1d2d5a"
     },
@@ -18,23 +19,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.eligooch"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.eligooch.pocketchrist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.eligooch"
+      "package": "com.eligooch.pocketchrist"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "82bb294b-0e54-46d2-a25c-1c3909a047ef"
+        "projectId": "790f7b37-8e6f-4f34-8f1e-a578d195fb07"
       }
-    }
+    },
+    "owner": "jeliexpo"
   }
 }

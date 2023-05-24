@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "pocketjesusnative.app"
-               BlueprintName = "pocketjesusnative"
-               ReferencedContainer = "container:pocketjesusnative.xcodeproj">
+               BuildableName = "PocketChrist.app"
+               BlueprintName = "PocketChrist"
+               ReferencedContainer = "container:PocketChrist.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "pocketjesusnativeTests.xctest"
-               BlueprintName = "pocketjesusnativeTests"
-               ReferencedContainer = "container:pocketjesusnative.xcodeproj">
+               BuildableName = "PocketChristTests.xctest"
+               BlueprintName = "PocketChristTests"
+               ReferencedContainer = "container:PocketChrist.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "pocketjesusnative.app"
-            BlueprintName = "pocketjesusnative"
-            ReferencedContainer = "container:pocketjesusnative.xcodeproj">
+            BuildableName = "PocketChrist.app"
+            BlueprintName = "PocketChrist"
+            ReferencedContainer = "container:PocketChrist.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "pocketjesusnative.app"
-            BlueprintName = "pocketjesusnative"
-            ReferencedContainer = "container:pocketjesusnative.xcodeproj">
+            BuildableName = "PocketChrist.app"
+            BlueprintName = "PocketChrist"
+            ReferencedContainer = "container:PocketChrist.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

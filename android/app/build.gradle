@@ -115,7 +115,7 @@ android {
 
     namespace 'com.eligooch'
     defaultConfig {
-        applicationId 'com.eligooch'
+        applicationId 'com.eligooch.pocketchrist'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

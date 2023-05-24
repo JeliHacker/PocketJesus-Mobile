@@ -80,3 +80,9 @@ eas.json
 # Exclude .p12 and .cer files
 *.p12
 *.cer
+
+May23CertificateSigningRequest.certSigningRequest
+
+*.xcconfig
+
+Appfile

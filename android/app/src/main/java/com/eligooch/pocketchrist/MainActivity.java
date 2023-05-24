@@ -1,4 +1,4 @@
-package com.eligooch;
+package com.eligooch.pocketchrist;
 
 import android.os.Build;
 import android.os.Bundle;

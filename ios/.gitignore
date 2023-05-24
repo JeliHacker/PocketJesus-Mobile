@@ -28,3 +28,11 @@ project.xcworkspace
 
 # CocoaPods
 /Pods/
+
+*.xcuserdata/
+*.xcworkspace/
+
+Podfile.lock
+
+
+*.xcconfig
